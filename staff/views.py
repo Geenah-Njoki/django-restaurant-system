@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django .http import HttpResponse
 from django .http import HttpResponseRedirect
 from customer.models import *
-from customer.models import Staff, Category, Table, Reservation, Order
+from customer.models import Staff, Category, Table, Reservation, Order, Menu, OrderMenu, Payments, Delivery, OrderDelivery, Reviews
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 
@@ -163,5 +163,185 @@ class OrderUpdate(UpdateView):
 
             return context
         
+class MenuList(ListView):
+    model = Menu
+    context_object_name = "menu"
+    template_name = 'menu.html'
+
+class CreateMenu(CreateView):
+        model= Menu
+        fields = ["name"]
+        success_url = '/staff/menu'
+        template_name = 'staff_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Create Menu"
+
+            return context
+        
+class MenuUpdate(UpdateView):
+        model= Menu
+        fields = ["name"]
+        success_url = '/staff/menu'
+        template_name = 'staff_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Update Menu"
+
+            return context
+
+class OrderMenuList(ListView):
+    model = OrderMenu
+    context_object_name = "ordermenu"
+    template_name = 'ordermenu.html'
+
+class CreateOrderMenu(CreateView):
+        model= OrderMenu
+        fields = ["name"]
+        success_url = '/staff/ordermenu'
+        template_name = 'staff_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Create OrderMenu"
+
+            return context
+        
+class OrderMenuUpdate(UpdateView):
+        model= OrderMenu
+        fields = ["name"]
+        success_url = '/staff/ordermenu'
+        template_name = 'staff_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Update OrderMenu"
+
+            return context
+
+class PaymentList(ListView):
+    model = Payments
+    context_object_name = "payment"
+    template_name = 'payment.html'
+
+class CreatePayment(CreateView):
+        model= Payments
+        fields = ["name"]
+        success_url = '/staff/payment'
+        template_name = 'staff_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Create Payment"
+
+            return context
+        
+class PaymentUpdate(UpdateView):
+        model= Payments
+        fields = ["name"]
+        success_url = '/staff/payment'
+        template_name = 'staff_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Update Payment"
+
+            return context
+
+
+class DeliveryList(ListView):
+    model = Delivery
+    context_object_name = "delivery"
+    template_name = 'delivery.html'
+
+class CreateDelivery(CreateView):
+        model= Delivery
+        fields = ["name"]
+        success_url = '/staff/delivery'
+        template_name = 'staff_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Create Delivery"
+
+            return context
+        
+class DeliveryUpdate(UpdateView):
+        model= Delivery
+        fields = ["name"]
+        success_url = '/staff/delivery'
+        template_name = 'staff_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Update Delivery"
+
+            return context
+        
+class OrderDeliveryList(ListView):
+    model = OrderDelivery
+    context_object_name = "orderdelivery"
+    template_name = 'orderdelivery.html'
+
+class CreateOrderDelivery(CreateView):
+        model= OrderDelivery
+        fields = ["name"]
+        success_url = '/staff/orderdelivery'
+        template_name = 'staff_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Create OrderDelivery"
+
+            return context
+        
+class OrderDeliveryUpdate(UpdateView):
+        model= OrderDelivery
+        fields = ["name"]
+        success_url = '/staff/orderdelivery'
+        template_name = 'staff_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Update OrderDelivery"
+
+            return context
+
+class ReviewsList(ListView):
+    model = Reviews
+    context_object_name = "reviews"
+    template_name = 'review.html'
+
+class CreateReviews(CreateView):
+        model= Reviews
+        fields = ["name"]
+        success_url = '/staff/reviews'
+        template_name = 'staff_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Create Reviews"
+
+            return context
+        
+class ReviewsUpdate(UpdateView):
+        model= Reviews
+        fields = ["name"]
+        success_url = '/staff/reviews'
+        template_name = 'staff_form.html'
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Update Reviews"
+
+            return context
+
+
+        
+
+        
+
 
         

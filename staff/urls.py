@@ -21,6 +21,27 @@ urlpatterns = [
     path('reservation/update/<pk>', ReservationUpdate.as_view(), name= "reservation.update"),
     path('order', OrderList.as_view(), name="order"),
     path('order/create', CreateOrder.as_view(), name="create.order"),
-    path('order/update/<pk>', OrderUpdate.as_view(), name= "order.update")
+    path('order/update/<pk>', OrderUpdate.as_view(), name= "order.update"),
+    path('menu', MenuList.as_view(), name="menu"),
+    path('menu/create', CreateMenu.as_view(), name="create.menu"),
+    path('menu/update/<pk>', MenuUpdate.as_view(), name= "menu.update"),
+    path('ordermenu', OrderMenuList.as_view(), name="ordermenu"),
+    path('ordermenu/create', CreateOrderMenu.as_view(), name="create.ordermenu"),
+    path('ordermenu/update/<pk>', OrderMenuUpdate.as_view(), name= "ordermenu.update"),
+    path('payment', PaymentList.as_view(), name="payment"),
+    path('payment/create', CreatePayment.as_view(), name="create.payment"),
+    path('payment/update/<pk>', PaymentUpdate.as_view(), name= "payment.update"),
+    path('delivery', DeliveryList.as_view(), name="delivery"),
+    path('delivery/create', CreateDelivery.as_view(), name="create.delivery"),
+    path('delivery/update/<pk>', DeliveryUpdate.as_view(), name= "delivery.update"),
+    path('orderdelivery', OrderDeliveryList.as_view(), name="orderdelivery"),
+    path('orderdelivery/create', CreateOrderDelivery.as_view(), name="create.orderdelivery"),
+    path('orderdelivery/update/<pk>', OrderDeliveryUpdate.as_view(), name= "orderdelivery.update"),
+    path('reviews', ReviewsList.as_view(), name="reviews"),
+    path('reviews/create', CreateReviews.as_view(), name="create.reviews"),
+    path('reviews/update/<pk>', ReviewsUpdate.as_view(), name= "reviews.update")
 ]
+
+
+
 
