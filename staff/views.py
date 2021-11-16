@@ -23,12 +23,12 @@ def dashboard(request):
 
 class StaffList(ListView):
     model = Staff
-    context_object_name = "staff"
+    context_object_name = "staff_list"
     template_name = 'staff.html'
 
 class CreateStaff(CreateView):
         model= Staff
-        fields = ["staff_number","gender", "salary", "address","department", "working_hours"]
+        fields = ["username","staff_number","gender", "salary", "address","department", "working_hours"]
         success_url = '/staff/staff'
         template_name = 'staff_form.html'
 

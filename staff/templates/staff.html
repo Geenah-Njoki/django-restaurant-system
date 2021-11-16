@@ -27,7 +27,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Number</th>
+                        <th>Staff Number</th>
                         <th>Gender</th>
                         <th>Salary</th>
                         <th>Address</th>
@@ -41,11 +41,11 @@
                 </thead>
 
                 <tbody>
-                    {% for staff in staff %}
+                    {% for staff in staff_list %}
 
                         <tr>
                             <td>{{staff.id}}</td>
-                            <td>{{staff.number}}</td>
+                            <td>{{staff.staff_number}}</td>
                             <td>{{staff.gender}}</td>
                             <td>{{staff.salary}}</td>
                             <td>{{staff.address}}</td>
