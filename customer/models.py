@@ -21,7 +21,7 @@ class Staff(User):
         ('Chef', 'Chef'),
         ('Admin', 'Admin')
     )
-    department=models.CharField(max_length=200)
+    department=models.CharField(max_length=200, choices=DEPARTMENT_TYPES)
     working_hours=models.IntegerField(default=8)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

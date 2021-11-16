@@ -6,9 +6,12 @@ from customer.models import *
 from customer.models import Staff, Category, Table, Reservation, Order, Menu, OrderMenu, Payments, Delivery, OrderDelivery, Reviews
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
+@login_required
 def dashboard(request):
 
     context = {
@@ -25,7 +28,7 @@ class StaffList(ListView):
 
 class CreateStaff(CreateView):
         model= Staff
-        fields = ["name"]
+        fields = ["staff_number","gender", "salary", "address","department", "working_hours"]
         success_url = '/staff/staff'
         template_name = 'staff_form.html'
 
@@ -49,7 +52,7 @@ class StaffUpdate(UpdateView):
         
 class CategoryList(ListView):
     model = Category
-    context_object_name = "category"
+    context_object_name = "categories"
     template_name = 'categories.html'
 
 class CreateCategory(CreateView):
@@ -78,12 +81,12 @@ class CategoryUpdate(UpdateView):
         
 class TableList(ListView):
     model = Table
-    context_object_name = "table"
+    context_object_name = "tables"
     template_name = 'table.html'
 
 class CreateTable(CreateView):
         model= Table
-        fields = ["name"]
+        fields = ["table_number", "is_taken"]
         success_url = '/staff/table'
         template_name = 'staff_form.html'
 
@@ -107,12 +110,12 @@ class TableUpdate(UpdateView):
 
 class ReservationList(ListView):
     model = Reservation
-    context_object_name = "reservation"
+    context_object_name = "reservations"
     template_name = 'reservation.html'
 
 class CreateReservation(CreateView):
         model= Reservation
-        fields = ["name"]
+        fields = ["table","user", "people", "status"]
         success_url = '/staff/reservation'
         template_name = 'staff_form.html'
 
@@ -136,12 +139,12 @@ class ReservationUpdate(UpdateView):
 
 class   OrderList(ListView):
     model = Order
-    context_object_name = "order"
+    context_object_name = "orders"
     template_name = 'order.html'
 
 class CreateOrder(CreateView):
         model= Order
-        fields = ["name"]
+        fields = ["status","cost","user", "is_delivery", "order_number", "staff"]
         success_url = '/staff/order'
         template_name = 'staff_form.html'
 
@@ -170,7 +173,7 @@ class MenuList(ListView):
 
 class CreateMenu(CreateView):
         model= Menu
-        fields = ["name"]
+        fields = ["type", "category", "item", "quantity"]
         success_url = '/staff/menu'
         template_name = 'staff_form.html'
 
@@ -223,12 +226,12 @@ class OrderMenuUpdate(UpdateView):
 
 class PaymentList(ListView):
     model = Payments
-    context_object_name = "payment"
+    context_object_name = "payments"
     template_name = 'payment.html'
 
 class CreatePayment(CreateView):
         model= Payments
-        fields = ["name"]
+        fields = ["status", "user", "order", "payment_mode"]
         success_url = '/staff/payment'
         template_name = 'staff_form.html'
 
@@ -253,12 +256,12 @@ class PaymentUpdate(UpdateView):
 
 class DeliveryList(ListView):
     model = Delivery
-    context_object_name = "delivery"
+    context_object_name = "deliveries"
     template_name = 'delivery.html'
 
 class CreateDelivery(CreateView):
         model= Delivery
-        fields = ["name"]
+        fields = ["location_groups", "delivery_fee"]
         success_url = '/staff/delivery'
         template_name = 'staff_form.html'
 
@@ -316,7 +319,7 @@ class ReviewsList(ListView):
 
 class CreateReviews(CreateView):
         model= Reviews
-        fields = ["name"]
+        fields = ["user", "message", "stars"]
         success_url = '/staff/reviews'
         template_name = 'staff_form.html'
 

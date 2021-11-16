@@ -139,3 +139,6 @@ STATICFILES_DIRS = [
     
 
 ]
+
+
+LOGIN_REDIRECT_URL = '/staff/dashboard'
