@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'customer.apps.CustomerConfig',
     'staff.apps.StaffConfig',
-    'widget_tweaks'
+    'widget_tweaks',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -136,9 +137,25 @@ STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'customer/static/'),
      os.path.join(BASE_DIR, 'staff/static/'),
+
     
 
 ]
 
 
 LOGIN_REDIRECT_URL = '/staff/dashboard'
+
+#SMTP Configuration
+
+#EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST='smtp.gmail.com'
+#EMAIL_PORT='587'
+##EMAIL_USE_TLS=True
+# EMAIL_HOST_USER='georginanjoki7@gmail.com'
+# EMAIL_HOST_PASSWORD='Georgina123.'
+
+
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '7bd8d7ecdae481'
+EMAIL_HOST_PASSWORD = 'f72d2db546a78f'
+EMAIL_PORT = '2525'
