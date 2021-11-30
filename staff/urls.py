@@ -8,8 +8,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('dashboard', dashboard, name="dashboard"),
     path('staff', StaffList.as_view(), name="staff"),
+    path('staff', viewStaff, name='staff'),
     path('staff/create', CreateStaff.as_view(), name="create.staff"),
     path('staff/update/<pk>', StaffUpdate.as_view(), name= "staff.update"),
+    path('staff/<pk>/details', StaffDetails.as_view(), name="staff.details"),
+    path('staff/delete/<int:id>', deleteStaff, name="staff.delete"),
     path('category', CategoryList.as_view(), name="categories"),
     path('category/create', CreateCategory.as_view(), name="create.category"),
     path('category/update/<pk>', CategoryUpdate.as_view(), name= "category.update"),
@@ -23,14 +26,19 @@ urlpatterns = [
     path('order/create', CreateOrder.as_view(), name="create.order"),
     path('order/update/<pk>', OrderUpdate.as_view(), name= "order.update"),
     path('menu', MenuList.as_view(), name="menu"),
+    path('menu/<pk>/details', MenuDetails.as_view(), name="menu.details"),
+    path('menu/delete/<int:id>', deleteMenu, name="menu.delete"),
     path('menu/create', CreateMenu.as_view(), name="create.menu"),
     path('menu/update/<pk>', MenuUpdate.as_view(), name= "menu.update"),
     path('ordermenu', OrderMenuList.as_view(), name="ordermenu"),
     path('ordermenu/create', CreateOrderMenu.as_view(), name="create.ordermenu"),
     path('ordermenu/update/<pk>', OrderMenuUpdate.as_view(), name= "ordermenu.update"),
     path('payment', PaymentList.as_view(), name="payment"),
+    path('payment', viewPayment, name='payment'),
+    path('payment/<pk>/details', PaymentDetails.as_view(), name="payment.details"),
     path('payment/create', CreatePayment.as_view(), name="create.payment"),
     path('payment/update/<pk>', PaymentUpdate.as_view(), name= "payment.update"),
+    
     path('delivery', DeliveryList.as_view(), name="delivery"),
     path('delivery/create', CreateDelivery.as_view(), name="create.delivery"),
     path('delivery/update/<pk>', DeliveryUpdate.as_view(), name= "delivery.update"),
@@ -42,6 +50,9 @@ urlpatterns = [
     path('reviews/update/<pk>', ReviewsUpdate.as_view(), name= "reviews.update")
 ]
 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 

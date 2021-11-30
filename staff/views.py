@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from django .http import HttpResponse
+from django .http import HttpResponse, JsonResponse
 from django .http import HttpResponseRedirect
 from customer.models import *
 from customer.models import Staff, Category, Table, Reservation, Order, Menu, OrderMenu, Payments, Delivery, OrderDelivery, Reviews
@@ -8,6 +8,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import *
 
 
 # Create your views here.
@@ -20,6 +21,70 @@ def dashboard(request):
     }
 
     return render(request, 'dashboard.html', context)
+@login_required
+def viewStaff(request):
+    context = {
+        'staff' : Staff.objects.all()
+    }
+
+    return render(request, 'staff.html', context)
+
+@login_required
+def deleteStaff(request, id):
+
+    staff = Staff.objects.get(pk=id)
+    staff.delete()
+
+    
+
+    if request.is_ajax():
+
+        data = {}
+        return JsonResponse(data)
+
+    else:
+        return HttpResponseRedirect('/staff/staff')
+
+@login_required
+def viewMenu(request):
+    context = {
+        'menu' : Menu.objects.all()
+    }
+
+    return render(request, 'menu.html', context)
+
+@login_required
+def deleteMenu(request, id):
+
+    menu = Menu.objects.get(pk=id)
+    menu.delete()
+
+    
+
+    if request.is_ajax():
+
+        data = {}
+        return JsonResponse(data)
+
+    else:
+        return HttpResponseRedirect('/staff/menu')
+
+@login_required
+def viewPayment(request):
+    context = {
+        'payment' : Payments.objects.all()
+    }
+
+    return render(request, 'payment.html', context)
+
+# @login_required
+
+# def viewDelivery(request):
+#     context = {
+#         'delivery' : Delivery.objects.all()
+#     }
+
+#     return render(request, 'delivery.html', context)
 
 class StaffList(ListView):
     model = Staff
@@ -39,8 +104,8 @@ class CreateStaff(CreateView):
             return context
         
 class StaffUpdate(UpdateView):
-        model= Category
-        fields = ["name"]
+        model= Staff
+        fields = '__all__'
         success_url = '/staff/staff'
         template_name = 'staff_form.html'
 
@@ -49,6 +114,11 @@ class StaffUpdate(UpdateView):
             context['title'] = "Update Staff"
 
             return context
+
+class StaffDetails(DetailView):
+    model = Staff
+    template_name = 'staff_details.html'
+    context_object_name = "staff"
         
 class CategoryList(ListView):
     model = Category
@@ -185,7 +255,7 @@ class CreateMenu(CreateView):
         
 class MenuUpdate(UpdateView):
         model= Menu
-        fields = ["name"]
+        fields = '__all__'
         success_url = '/staff/menu'
         template_name = 'staff_form.html'
 
@@ -223,6 +293,10 @@ class OrderMenuUpdate(UpdateView):
             context['title'] = "Update OrderMenu"
 
             return context
+class MenuDetails(DetailView):
+    model = Menu
+    template_name = 'menu_details.html'
+    context_object_name = "menu"
 
 class PaymentList(ListView):
     model = Payments
@@ -243,7 +317,7 @@ class CreatePayment(CreateView):
         
 class PaymentUpdate(UpdateView):
         model= Payments
-        fields = ["name"]
+        fields = '__all__'
         success_url = '/staff/payment'
         template_name = 'staff_form.html'
 
@@ -252,6 +326,10 @@ class PaymentUpdate(UpdateView):
             context['title'] = "Update Payment"
 
             return context
+class PaymentDetails(DetailView):
+    model = Payments
+    template_name = 'payment_details.html'
+    context_object_name = "payments"
 
 
 class DeliveryList(ListView):
@@ -273,7 +351,7 @@ class CreateDelivery(CreateView):
         
 class DeliveryUpdate(UpdateView):
         model= Delivery
-        fields = ["name"]
+        fields = '__all__'
         success_url = '/staff/delivery'
         template_name = 'staff_form.html'
 

@@ -51,7 +51,7 @@
                             <td>{{menu.updated_at}}</td>
                             <td>
                                 <a href="{% url 'menu.update' menu.id %}" class="btn btn-dark btn-sm"><i class="fa fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                <a href="{% url 'menu.details' menu.id %}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
 
                             
                             </td>
