@@ -16,7 +16,7 @@
             <div class="row">
                 <h5>Reviews</h5>
 
-                <a href="{% url 'reviews' %}" class="btn btn-info btn-sm ml-auto">
+                <a href="{% url 'create.reviews' %}" class="btn btn-info btn-sm ml-auto">
                     <i class="fa fa-plus-circle mr-2"></i>
                     Create Review
                 </a>
@@ -41,15 +41,15 @@
                     {% for review in reviews %}
 
                         <tr>
-                            <td>{{reviews.id}}</td>
-                            <td>{{reviews.user}}</td>
-                            <td>{{reviews.message}}</td>
-                            <td>{{reviews.stars}}</td>
-                            <td>{{reviews.created_at}}</td>
-                            <td>{{reviews.updated_at}}</td>
-                            <td>
-                                <a href="{% url 'reviews.update' reviews.id %}" class="btn btn-dark btn-sm"><i class="fa fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                            <td>{{review.id}}</td>
+                            <td>{{review.user}}</td>
+                            <td>{{review.message}}</td>
+                            <td>{{review.stars}}</td>
+                            <td>{{review.created_at}}</td>
+                            <td>{{review.updated_at}}</td>
+                            <td>    
+                                <a href="{% url 'reviews.update' review.id %}" class="btn btn-dark btn-sm"><i class="fa fa-edit"></i></a>
+                                <a href="{% url 'review.details' review.id %}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
 
                             
                             </td>

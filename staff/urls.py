@@ -21,7 +21,9 @@ urlpatterns = [
     path('table/update/<pk>', TableUpdate.as_view(), name= "table.update"),
     path('reservation', ReservationList.as_view(), name="reservation"),
     path('reservation/create', CreateReservation.as_view(), name="create.reservation"),
+    path('reservation/<pk>/details', ReservationDetails.as_view(), name="reservation.details"),
     path('reservation/update/<pk>', ReservationUpdate.as_view(), name= "reservation.update"),
+    path('reservation/delete/<int:id>', deleteReservation, name="reservation.delete"),
     path('order', OrderList.as_view(), name="order"),
     path('order/create', CreateOrder.as_view(), name="create.order"),
     path('order/update/<pk>', OrderUpdate.as_view(), name= "order.update"),
@@ -45,9 +47,12 @@ urlpatterns = [
     path('orderdelivery', OrderDeliveryList.as_view(), name="orderdelivery"),
     path('orderdelivery/create', CreateOrderDelivery.as_view(), name="create.orderdelivery"),
     path('orderdelivery/update/<pk>', OrderDeliveryUpdate.as_view(), name= "orderdelivery.update"),
-    path('reviews', ReviewsList.as_view(), name="reviews"),
+    path('reviews', ReviewsList.as_view(), name="review"),
+    path('reviews', viewReview, name='reviews'),
+    path('reviews/<pk>/details', ReviewDetails.as_view(), name="review.details"),
     path('reviews/create', CreateReviews.as_view(), name="create.reviews"),
-    path('reviews/update/<pk>', ReviewsUpdate.as_view(), name= "reviews.update")
+    path('reviews/update/<pk>', ReviewsUpdate.as_view(), name= "reviews.update"),
+    path('reviews/delete/<int:id>', deleteReview, name="review.delete")
 ]
 
 

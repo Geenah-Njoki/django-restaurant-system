@@ -77,6 +77,46 @@ def viewPayment(request):
 
     return render(request, 'payment.html', context)
 
+@login_required
+def viewReview(request):
+    context = {
+        'reviews' : Reviews.objects.all()
+    }
+
+    return render(request, 'reviews.html', context)
+
+@login_required
+def deleteReview(request, id):
+
+    review = Reviews.objects.get(pk=id)
+    review.delete()
+
+    
+
+    if request.is_ajax():
+
+        data = {}
+        return JsonResponse(data)
+
+    else:
+        return HttpResponseRedirect('/staff/reviews')
+@login_required
+def deleteReservation(request, id):
+
+    reservation = Reservation.objects.get(pk=id)
+    reservation.delete()
+
+    
+
+    if request.is_ajax():
+
+        data = {}
+        return JsonResponse(data)
+
+    else:
+        return HttpResponseRedirect('/staff/reservation')
+
+
 # @login_required
 
 # def viewDelivery(request):
@@ -139,7 +179,7 @@ class CreateCategory(CreateView):
         
 class CategoryUpdate(UpdateView):
         model= Category
-        fields = ["name"]
+        fields = "__all__"
         success_url = '/staff/category'
         template_name = 'staff_form.html'
 
@@ -168,7 +208,7 @@ class CreateTable(CreateView):
         
 class TableUpdate(UpdateView):
         model= Table
-        fields = ["name"]
+        fields = "__all__"
         success_url = '/staff/table'
         template_name = 'staff_form.html'
 
@@ -197,7 +237,7 @@ class CreateReservation(CreateView):
         
 class ReservationUpdate(UpdateView):
         model= Reservation
-        fields = ["name"]
+        fields = "__all__"
         success_url = '/staff/reservation'
         template_name = 'staff_form.html'
 
@@ -206,6 +246,11 @@ class ReservationUpdate(UpdateView):
             context['title'] = "Update Reservation"
 
             return context
+
+class ReservationDetails(DetailView):
+    model = Reservation
+    template_name = 'reservation_details.html'
+    context_object_name = "reservation"
 
 class   OrderList(ListView):
     model = Order
@@ -226,7 +271,7 @@ class CreateOrder(CreateView):
         
 class OrderUpdate(UpdateView):
         model= Order
-        fields = ["name"]
+        fields = "__all__"
         success_url = '/staff/order'
         template_name = 'staff_form.html'
 
@@ -272,7 +317,7 @@ class OrderMenuList(ListView):
 
 class CreateOrderMenu(CreateView):
         model= OrderMenu
-        fields = ["name"]
+        fields = "__all__"
         success_url = '/staff/ordermenu'
         template_name = 'staff_form.html'
 
@@ -284,7 +329,7 @@ class CreateOrderMenu(CreateView):
         
 class OrderMenuUpdate(UpdateView):
         model= OrderMenu
-        fields = ["name"]
+        fields = "__all__"
         success_url = '/staff/ordermenu'
         template_name = 'staff_form.html'
 
@@ -380,7 +425,7 @@ class CreateOrderDelivery(CreateView):
         
 class OrderDeliveryUpdate(UpdateView):
         model= OrderDelivery
-        fields = ["name"]
+        fields = "__all__"
         success_url = '/staff/orderdelivery'
         template_name = 'staff_form.html'
 
@@ -406,10 +451,15 @@ class CreateReviews(CreateView):
             context['title'] = "Create Reviews"
 
             return context
+
+class ReviewDetails(DetailView):
+    model = Reviews
+    template_name = 'review_details.html'
+    context_object_name = "review"
         
 class ReviewsUpdate(UpdateView):
         model= Reviews
-        fields = ["name"]
+        fields = "__all__"
         success_url = '/staff/reviews'
         template_name = 'staff_form.html'
 
