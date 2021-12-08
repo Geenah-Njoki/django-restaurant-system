@@ -16,11 +16,21 @@ from .models import *
 def dashboard(request):
 
     context = {
-        'users': User.objects.all()
+        'users': User.objects.all(),
+        'table' : Table.objects.all(),
+        'staff' : Staff.objects.all()
         
     }
 
     return render(request, 'dashboard.html', context)
+
+@login_required
+def viewTable(request):
+    context = {
+        'table' : Table.objects.all()
+    }
+
+    return render(request, 'table.html', context)
 @login_required
 def viewStaff(request):
     context = {

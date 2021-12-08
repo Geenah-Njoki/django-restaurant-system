@@ -17,6 +17,7 @@ urlpatterns = [
     path('category/create', CreateCategory.as_view(), name="create.category"),
     path('category/update/<pk>', CategoryUpdate.as_view(), name= "category.update"),
     path('table', TableList.as_view(), name="table"),
+    path('table', viewTable, name='table'),
     path('table/create', CreateTable.as_view(), name="create.table"),
     path('table/update/<pk>', TableUpdate.as_view(), name= "table.update"),
     path('reservation', ReservationList.as_view(), name="reservation"),
