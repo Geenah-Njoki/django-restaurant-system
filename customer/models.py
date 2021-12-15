@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
+
 class Staff(User):
     staff_number= models.IntegerField(null=True, blank=True)
     GENDER_TYPES=(

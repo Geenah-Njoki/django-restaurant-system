@@ -136,6 +136,20 @@ def deleteReservation(request, id):
 
 #     return render(request, 'delivery.html', context)
 
+
+# class CreateUser(CreateView):
+#         model= User
+#         fields = ["username","email"]
+#         success_url = '/staff/user'
+#         template_name = 'staff_form.html'
+
+#         def get_context_data(self, **kwargs):
+#             context = super().get_context_data(**kwargs)
+#             context['title'] = "Create User"
+
+#             return context
+        
+
 class StaffList(ListView):
     model = Staff
     context_object_name = "staff_list"
