@@ -14,6 +14,7 @@ urlpatterns = [
     path('staff/update/<pk>', StaffUpdate.as_view(), name= "staff.update"),
     path('staff/<pk>/details', StaffDetails.as_view(), name="staff.details"),
     path('staff/delete/<int:id>', deleteStaff, name="staff.delete"),
+   
     path('category', CategoryList.as_view(), name="categories"),
     path('category/create', CreateCategory.as_view(), name="create.category"),
     path('category/update/<pk>', CategoryUpdate.as_view(), name= "category.update"),

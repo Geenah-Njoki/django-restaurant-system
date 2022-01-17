@@ -18,7 +18,10 @@ def dashboard(request):
     context = {
         'users': User.objects.all(),
         'table' : Table.objects.all(),
-        'staff' : Staff.objects.all()
+        'staff' : Staff.objects.all(),
+       
+
+
         
     }
 
@@ -183,6 +186,8 @@ class StaffDetails(DetailView):
     model = Staff
     template_name = 'staff_details.html'
     context_object_name = "staff"
+
+
         
 class CategoryList(ListView):
     model = Category
