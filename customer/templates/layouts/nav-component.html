@@ -14,11 +14,38 @@
         </li> -->
         
         <li class="nav-item">
-          <a class="nav-link mx-3 text-light" href="#">Menu</a>
+          <a class="nav-link mx-3 text-light" href="menu.html">Menu</a>
         </li>
         
+       
+
+        {% if user.is_authenticated %}
+        
+          <div class="dropdown">
+            <button class="btn btn-warning btn-rounded mx-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Welcome {{user.username}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="orders.html">Orders</a>
+              <a class="dropdown-item" href="reservations.html">Reservations</a>
+              <a class="dropdown-item" href="reviews.html">Reviews</a>
+            </div>
+          </div>
+          
+
+        
+        {% else %}
+          <li class="nav-item">
+          <a class="btn btn-default btn-rounded mx-3 text-light"  data-toggle="modal" data-target="#loginModal" href="#">Log in</a>
+        </li>
+          <li class="nav-item">
+          <a class="btn btn-default btn-rounded mx-3 text-light" data-toggle="modal" data-target="#exampleModal" href="#">Sign up</a>
+        </li>
+
+        {% endif %}
+            
         <li class="nav-item">
-          <a class="btn btn-info btn-rounded mx-3" href="#">Make a Reservation</a>
+          <a class="btn btn-info btn-rounded mx-3" href="reservations.html">Make a Reservation</a>
         </li>
 
         
