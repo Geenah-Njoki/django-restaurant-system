@@ -1,9 +1,8 @@
-{% extends "base.html" %}
+{% extends 'layouts/base.html' %}
+{% load static %}
 
-{% block content %} 
 
-{% endblock %}
-
+{% block content %}
 <div class= "row justify-content-center">
     
     
@@ -14,11 +13,11 @@
     <div class="card">
         <div class="card-header bg-white">
             <div class="row">
-                <h5>Reviews</h5>
+                <h5>Order</h5>
 
                 <a href="#" class="btn btn-info btn-sm ml-auto">
                     <i class="fa fa-plus-circle mr-2"></i>
-                    Create Review
+                    Make Order
                 </a>
             </div>
         </div>
@@ -27,9 +26,12 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Status</th>
+                        <th>Cost</th>
                         <th>User</th>
-                        <th>Message</th>
-                        <th>Stars</th>
+                        <th>Is delivery</th>
+                        <th>Order number</th>
+                        
                         <th>Created at</th>
                         <th>Updated at</th>
                         
@@ -37,7 +39,16 @@
                     </tr>
                 </thead>
 
-                
+                <tbody>
+                    {% for order in orders %}
+
+                        <tr>
+                            
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
             </table>
 
         </div>

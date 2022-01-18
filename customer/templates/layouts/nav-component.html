@@ -14,7 +14,7 @@
         </li> -->
         
         <li class="nav-item">
-          <a class="nav-link mx-3 text-light" href="menu.html">Menu</a>
+          <a class="nav-link mx-3 text-light" href="{% url 'customer.menu' %}">Menu</a>
         </li>
         
        
@@ -26,9 +26,10 @@
               Welcome {{user.username}}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="orders.html">Orders</a>
-              <a class="dropdown-item" href="reservations.html">Reservations</a>
-              <a class="dropdown-item" href="reviews.html">Reviews</a>
+              
+              <a class="dropdown-item" href="{% url 'customer.orders' %}">Orders</a>
+              <a class="dropdown-item" href="{% url 'customer.reservations' %}">Reservations</a>
+              <a class="dropdown-item" href="{% url 'customer.reviews' %}">Reviews</a>
             </div>
           </div>
           
@@ -45,7 +46,7 @@
         {% endif %}
             
         <li class="nav-item">
-          <a class="btn btn-info btn-rounded mx-3" href="reservations.html">Make a Reservation</a>
+          <a class="btn btn-info btn-rounded mx-3" href="#">Make a Reservation</a>
         </li>
 
         

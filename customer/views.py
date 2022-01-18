@@ -18,6 +18,7 @@ from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
+from .models import *
 
 # Create your views here.
 
@@ -123,5 +124,44 @@ def password_reset_requuest(request):
         )
 
         return render(request=request, template_name="password/password_reset_confirm.html", context={})
+
+def getOrders(request):
+    
+    context={
+        'orders' : Order.objects.all()
+
+    }
+    
+    return render(request, 'orders.html', context)
+
+def getReservations(request):
+    context={
+        'reservations' : Reservation.objects.all()
+
+    }
+
+    return render(request, 'reservations.html', context)
+
+def getReviews(request):
+    context={
+        'reviews' : Reviews.objects.all()
+
+    }
+
+    return render(request, 'reviews.html', context)
+
+def getMenu(request):
+    context={
+        'menu' : Menu.objects.all()
+
+    }
+
+    return render(request, 'menu.html', context)
+
+
+
+
+
+
 
 

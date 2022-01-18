@@ -17,17 +17,24 @@ from django.contrib import admin
 from django.urls import path
 from .views import *
 from django.contrib.auth import views as auth_views
+from customer import views
 
 
 urlpatterns = [
    
-   path('', home, name="home"),
-   path('send/reset/email', password_reset_request, name="send_reset_email"),
-   
-   path('password_reset_sent/', auth_views.PasswordResetDoneView.as_view(template_name='password/password-reset-done.html'), name='password_reset_done'),
+    path('', home, name="home"),
+    path('send/reset/email', password_reset_request, name="send_reset_email"),
+    path('password_reset_sent/', auth_views.PasswordResetDoneView.as_view(template_name='password/password-reset-done.html'), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="password/password-reset-confirm.html"), name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password/password-reset-complete.html'), name='password_reset_complete'),    
-      
+    path('customer/orders', views.getOrders, name="customer.orders"),
+    path('customer/reservations', views.getReservations, name='customer.reservations'),
+    path('customer/reviews', views.getReviews, name="customer.reviews"),
+    path('customer/menu', views.getMenu, name="customer.menu")
+
+
+
+    
 ]
 
   
