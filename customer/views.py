@@ -158,6 +158,13 @@ def getMenu(request):
 
     return render(request, 'menu.html', context)
 
+def makeOrder(request):
+    context={
+        'order' : Order.objects.all()
+
+    }
+
+    return render(request, 'orders_form.html', context)
 
 
 

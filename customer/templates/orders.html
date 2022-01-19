@@ -3,56 +3,22 @@
 
 
 {% block content %}
-<div class= "row justify-content-center">
-    
-    
-</div>
 
-
-<div class="col-lg-12 mt-5">
-    <div class="card">
-        <div class="card-header bg-white">
-            <div class="row">
-                <h5>Order</h5>
-
-                <a href="#" class="btn btn-info btn-sm ml-auto">
-                    <i class="fa fa-plus-circle mr-2"></i>
-                    Make Order
-                </a>
+<div class="container">
+<div class="row justify-content-center mx-auto">
+<div class="col-lg-6 mt-5 justify-content-center">
+    <div class="card"style="width: 18rem;">
+        <img class="card-img-top" src="[% static 'images/orders.svg'%}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Order your next meal from the best in town </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="{% url 'customer.order' %}" class="btn btn-warning">Make Order</a>
             </div>
-        </div>
-        <div class="card-body">
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Status</th>
-                        <th>Cost</th>
-                        <th>User</th>
-                        <th>Is delivery</th>
-                        <th>Order number</th>
-                        
-                        <th>Created at</th>
-                        <th>Updated at</th>
-                        
-                        <th>Action</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {% for order in orders %}
-
-                        <tr>
-                            
-                        </tr>
-
-                    {% endfor %}
-
-                </tbody>
-            </table>
-
-        </div>
     </div>
 </div>
+</div>
+</div>
+
+
 
 {% endblock %}

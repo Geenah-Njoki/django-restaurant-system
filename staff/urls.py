@@ -64,8 +64,3 @@ if settings.DEBUG:
 
 
 
-##Np nmeongeza table apo kwa orders na reservations
-#I'm thinking of doing the same thing I did kwa staff...so itabidi I create a new form. What do you think
-##Since you'll use forms to make orders or reserve tables then that okay. However, are you sure you want to use that design for the customer?
-#Hadi I'm not sure. Naona itabidi nicreate classes za list, update, detail etc. But si the customer is going to make an order the same way the admin was making it. Except ya customer haitakuwa na staff
-## Yeah the process is similar but the presentation n

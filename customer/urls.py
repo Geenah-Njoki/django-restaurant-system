@@ -30,7 +30,8 @@ urlpatterns = [
     path('customer/orders', views.getOrders, name="customer.orders"),
     path('customer/reservations', views.getReservations, name='customer.reservations'),
     path('customer/reviews', views.getReviews, name="customer.reviews"),
-    path('customer/menu', views.getMenu, name="customer.menu")
+    path('customer/menu', views.getMenu, name="customer.menu"),
+     path('customer/order', views.makeOrder, name="customer.order")
 
 
 
