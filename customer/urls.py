@@ -18,6 +18,7 @@ from django.urls import path
 from .views import *
 from django.contrib.auth import views as auth_views
 from customer import views
+from django.views.generic import TemplateView, View
 
 
 urlpatterns = [
@@ -31,7 +32,8 @@ urlpatterns = [
     path('customer/reservations', views.getReservations, name='customer.reservations'),
     path('customer/reviews', views.getReviews, name="customer.reviews"),
     path('customer/menu', views.getMenu, name="customer.menu"),
-     path('customer/order', views.makeOrder, name="customer.order")
+    path('customer/order', views.makeOrder, name="customer.order"),
+    path('customer/about', DocumentationView.as_view(), name="customer.about")
 
 
 

@@ -19,6 +19,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from .models import *
+from django.views.generic import TemplateView, View
 
 # Create your views here.
 
@@ -158,6 +159,8 @@ def getMenu(request):
 
     return render(request, 'menu.html', context)
 
+
+
 def makeOrder(request):
     context={
         'order' : Order.objects.all()
@@ -165,6 +168,15 @@ def makeOrder(request):
     }
 
     return render(request, 'orders_form.html', context)
+
+## Main Dashboard page
+
+
+## Documentation
+class DocumentationView(View):
+
+    def get(self, request):
+        return render(request, "about.html")
 
 
 
