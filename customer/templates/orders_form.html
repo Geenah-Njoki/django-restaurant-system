@@ -22,18 +22,24 @@
               </div>
           </div>
           <div class="card-body">
-  <form>
+  <form method="post" action="{% url 'save.order' %}">
+
+
+    {% csrf_token %}
+
+    <div class="form-group">
+    
+    
+
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="CharField">Food</label>
          
-          <select id="inputFood" class="form-control">
-            <option>...</option>
-            <option>Beef Samosas</option>
-            <option>French Fries</option>
-            <option>Fried Bananas</option>
-            <option>Fish Fillet</option>
-            <option>Steamed Vegetables</option>
+          <select id="inputFood" name="food" class="form-control">
+            <option>--select--</option>
+            {% for food in foods %}
+            <option value="{{food.id}}}">{{food.item}}</option>
+            {% endfor %}
           </select>
         </div>
         <div class="form-group col-md-6">
@@ -46,9 +52,10 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="CharField">Drink</label>
+      
           
           <select id="inputDrink" class="form-control">
-            <option>...</option>
+            <option>--select--</option>
             <option>Soda</option>
             <option>Still Water</option>
             <option>Sparkling Water</option>
@@ -57,7 +64,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="IntegerField">Quantity</label>
-          <input type="quantity" class="form-control" id="IntegerField" placeholder="">
+          <input type="number" name="quantity" class="form-control" id="IntegerField" placeholder="">
         </div>
         
       </div>
@@ -72,11 +79,17 @@
      
       <div class="form-group">
         <label for="CharField">Location</label>
-        <input type="text" class="form-control" id="CharField" placeholder="">
+        <select id="inputDrink" class="form-control">
+          <option>...</option>
+          <option>CBD</option>
+          <option>Within Nairobi</option>
+          <option>Outside Nairobi</option>
+         
+        </select>
       </div>
       <div class="form-group">
           <label for="IntegerField">Phone</label>
-          <input type="phonenumber" class="form-control" id="IntegerField" placeholder="">
+          <input type="number" name="phone_number" class="form-control" id="IntegerField" placeholder="">
       </div>
       <div class="form-group">
           <label for="inputEmail4">Email</label>
@@ -92,7 +105,9 @@
       
       
       
-      <button type="submit" class="btn btn-warning">Confirm Details</button>
+        <button type="submit" class="btn btn-warning">Confirm Details</button>
+    
+      </div>
     </form>
           </div>
       </div>

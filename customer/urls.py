@@ -19,7 +19,8 @@ from .views import *
 from django.contrib.auth import views as auth_views
 from customer import views
 from django.views.generic import TemplateView, View
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
    
@@ -33,11 +34,15 @@ urlpatterns = [
     path('customer/reviews', views.getReviews, name="customer.reviews"),
     path('customer/menu', views.getMenu, name="customer.menu"),
     path('customer/order', views.makeOrder, name="customer.order"),
-    path('customer/about', DocumentationView.as_view(), name="customer.about")
+    path('customer/make/order', views.saveOrder, name='save.order'),
+    path('customer/about', DocumentationView.as_view(), name="customer.about"),
+    path('customer/order_details', TemplateView.as_view(template_name='order_details.html'), name="order_details")
 
 
 
     
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
   

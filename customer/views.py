@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
@@ -162,12 +163,25 @@ def getMenu(request):
 
 
 def makeOrder(request):
+    food = Menu.objects.filter(type = Menu.FOOD)
     context={
-        'order' : Order.objects.all()
-
+        'foods' : food,
     }
 
     return render(request, 'orders_form.html', context)
+
+def saveOrder(request):
+    ##Here you get all the form details
+    phone_number = request.POST.get('phone_number')
+
+    ##After you get the details you create a new order order = Order.objects.create(...details...)
+    ##Then you take them to the order details page
+
+    context ={
+        
+    } ##Place the order you'l have created in this context so you can display it's details kwa the next page
+
+    return render(request, 'order_details.html', context)
 
 ## Main Dashboard page
 
@@ -178,6 +192,23 @@ class DocumentationView(View):
     def get(self, request):
         return render(request, "about.html")
 
+def getOrderDetails(request):
+    if request.method== "GET":
+        
+        data = {'success': False, 
+                'message':"Should be a POST request"}
+        return JsonResponse(data)
+    else:
+        print(request.META)
+        
+        form = RandomForm(request.POST)
+        if form.is_valid():
+            name = form. cleaned_data['name']
+            number = form.cleaned_data['number']
+        return HttpResponseRedirect('order_details')
+           
+
+           
 
 
 

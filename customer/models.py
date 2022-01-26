@@ -70,9 +70,12 @@ class Order(models.Model):
 
     
 class Menu(models.Model):
+
+    FOOD = 'Food'
+    DRINKS = 'Drinks'
     MENU_TYPES=(
-        ('Food', 'Food'),
-        ('Drinks', 'Drinks')
+        (FOOD, 'Food'),
+        (DRINKS, 'Drinks')
     
     )
     type=models.CharField(max_length=100, choices=MENU_TYPES)
