@@ -158,7 +158,7 @@ def getMenu(request):
 
     }
 
-    return render(request, 'menu.html', context)
+    return render(request, 'menu_customer.html', context)
 
 
 
