@@ -206,6 +206,21 @@ class DocumentationView(View):
     def get(self, request):
         return render(request, "about.html")
 
+def makeReservation(request):
+    user_name=request.POST.get("name")
+    email=request.POST.get("email")
+    current_user = User.objects.filter(email = email).first()
+    if not current_user:
+        current_user = User.objects.create_user(user_name, email, email)
+    reservation=Reservation.objects.create(
+        user=current_user,
+        
+    )
+    context= {
+        "reservation":reservation
+    }
+    return render(request, "reservations_details.html", context)
+
 
 
            
