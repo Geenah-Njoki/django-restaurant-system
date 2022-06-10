@@ -7,7 +7,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('dashboard', dashboard, name="dashboard"),
-    
+
+    path('user/create', CreateUser.as_view(), name="create.user"),
+
     path('staff', StaffList.as_view(), name="staff"),
     path('staff', viewStaff, name='staff'),
     path('staff/create', CreateStaff.as_view(), name="create.staff"),
@@ -18,6 +20,9 @@ urlpatterns = [
     path('category', CategoryList.as_view(), name="categories"),
     path('category/create', CreateCategory.as_view(), name="create.category"),
     path('category/update/<pk>', CategoryUpdate.as_view(), name= "category.update"),
+    path('category/<pk>/details', CategoryDetails.as_view(), name="category.details"),
+    path('category/delete/<int:id>', deleteCategory, name="category.delete"),
+
     path('table', TableList.as_view(), name="table"),
     path('table', viewTable, name='table'),
     path('table/create', CreateTable.as_view(), name="create.table"),

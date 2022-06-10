@@ -7,6 +7,10 @@ from django.contrib.auth.models import User
 
 
 
+
+
+
+
 class Staff(User):
     staff_number= models.IntegerField(null=True, blank=True)
     GENDER_TYPES=(
@@ -82,6 +86,7 @@ class Menu(models.Model):
     category=models.ForeignKey(Category, on_delete=models.CASCADE)
     item=models.CharField(max_length=100)
     quantity=models.IntegerField()
+    image=models.ImageField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class= "row justify-content-center mt-3">
-    <div class="col-lg-2 col-md-3 col-sm-6">
+    <div class="col-lg-3 col-md-4 col-sm-8">
         <div class="card border border-dark shadow-sm">
             <div class="card-body text-center">
                 <p class="text-info"><i class="fa fa-users fa-2x"></i></p>
@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-2 col-md-3 col-sm-6">
+    <div class="col-lg-3 col-md-4 col-sm-8">
         <div class="card border border-dark shadow-sm">
             <div class="card-body text-center">
                 <p class="text-info"><i class="fa fa-thumb-tack fa-2x"></i></p>
@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-2 col-md-3 col-sm-6">
+    <div class="col-lg-3 col-md-4 col-sm-8">
         <div class="card border border-dark shadow-sm">
             <div class="card-body text-center">
                 <p class="text-success"><i class="fa fa-eye fa-2x"></i></p>
@@ -42,7 +42,7 @@
                 <h5>Users</h5>
 
                 
-                <a href="#" class="btn btn-info btn-sm ml-auto">
+                <a href="{% url 'create.user' %}" class="btn btn-info btn-sm ml-auto">
                     <i class="fa fa-plus-circle mr-2"></i>
                     Create User
                 </a>

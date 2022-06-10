@@ -59,6 +59,22 @@ def deleteStaff(request, id):
         return HttpResponseRedirect('/staff/staff')
 
 @login_required
+def deleteCategory(request, id):
+
+    category = Category.objects.get(pk=id)
+    category.delete()
+
+    
+
+    if request.is_ajax():
+
+        data = {}
+        return JsonResponse(data)
+
+    else:
+        return HttpResponseRedirect('/staff/category')
+
+@login_required
 def viewMenu(request):
     context = {
         'menu' : Menu.objects.all()
@@ -140,17 +156,17 @@ def deleteReservation(request, id):
 #     return render(request, 'delivery.html', context)
 
 
-# class CreateUser(CreateView):
-#         model= User
-#         fields = ["username","email"]
-#         success_url = '/staff/user'
-#         template_name = 'staff_form.html'
+class CreateUser(CreateView):
+        model= User
+        fields = ["username","email"]
+        success_url = '/staff/user'
+        template_name = 'staff_form.html'
 
-#         def get_context_data(self, **kwargs):
-#             context = super().get_context_data(**kwargs)
-#             context['title'] = "Create User"
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['title'] = "Create User"
 
-#             return context
+            return context
         
 
 class StaffList(ListView):
@@ -217,6 +233,13 @@ class CategoryUpdate(UpdateView):
             context['title'] = "Update Category"
 
             return context
+
+class CategoryDetails(DetailView):
+    model = Category
+    template_name = 'category_details.html'
+    context_object_name = "category"
+
+
         
 class TableList(ListView):
     model = Table
@@ -317,7 +340,7 @@ class MenuList(ListView):
 
 class CreateMenu(CreateView):
         model= Menu
-        fields = ["type", "category", "item", "quantity"]
+        fields = ["image","type", "category", "item", "quantity"]
         success_url = '/staff/menu'
         template_name = 'staff_form.html'
 

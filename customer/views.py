@@ -21,6 +21,9 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from .models import *
 from django.views.generic import TemplateView, View
+from django.contrib import messages
+
+
 
 # Create your views here.
 
@@ -209,17 +212,32 @@ class DocumentationView(View):
 def makeReservation(request):
     user_name=request.POST.get("name")
     email=request.POST.get("email")
+    number_of_people = request.POST.get("people")
+    date = request.POST.get("date")
+
+    table = findTable()
+    if not table:
+        messages.info(request, 'Sorry. There are no available tables at the moment.')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
     current_user = User.objects.filter(email = email).first()
     if not current_user:
         current_user = User.objects.create_user(user_name, email, email)
     reservation=Reservation.objects.create(
         user=current_user,
-        
+        people = number_of_people,
+        table = table,
+        time = date
     )
     context= {
         "reservation":reservation
     }
+   
     return render(request, "reservations_details.html", context)
+
+def findTable(): 
+    table = Table.objects.filter(is_taken=False).first()
+    return table
 
 
 
