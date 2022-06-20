@@ -4,13 +4,6 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
-
-
-
-
-
-
-
 class Staff(User):
     staff_number= models.IntegerField(null=True, blank=True)
     GENDER_TYPES=(
@@ -38,11 +31,17 @@ class Category(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
 class Table(models.Model):
     table_number=models.IntegerField(blank=False)
     is_taken=models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.table_number)
 
 class Reservation(models.Model):
     table=models.ForeignKey(Table, on_delete=models.CASCADE)
@@ -57,6 +56,10 @@ class Reservation(models.Model):
     status=models.CharField(max_length=100, default="Active", choices=RESERVATION_STATUSES)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+
+        return self.user.username + ' Table: '+ self.table
 
 class Order(models.Model):
     ORDER_STATUSES = (

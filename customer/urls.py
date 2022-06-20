@@ -37,10 +37,8 @@ urlpatterns = [
     path('customer/make/order', views.saveOrder, name='save.order'),
     path('customer/about', DocumentationView.as_view(), name="customer.about"),
     path('customer/order_details', TemplateView.as_view(template_name='order_details.html'), name="order_details"),
-    path('customer/make/reservations', views.makeReservation, name="customer.make.reservations")
-
-
-
+    path('customer/make/reservations', views.makeReservation, name="customer.make.reservations"),
+    path('reservation/complete', views.reservationComplete, name="reservation.complete"),
     
 ]
 

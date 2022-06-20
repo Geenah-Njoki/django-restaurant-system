@@ -1,33 +1,67 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
 
+{% block css %}
+
+<style>
+  .banner{
+    height: 90vh;
+    background-color: brown;
+    background-image: url('/static/images/burger.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    
+}
+.banner-heading{
+    font-size: 2.5rem !important;
+    color: white;
+    font-weight: bold;
+
+}
+.overlay{
+    height: inherit;
+    background-color: rgba(0, 0, 0, 0.416);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.banner > .row{
+    z-index: 98;
+    position: relative;
+}
+.navbar{
+    z-index: 100;
+    width: 100%;
+    /* background-color: rgba(0, 0, 0, 0.416); */
+}
+
+</style>
+
+{% endblock %}
+
 
 {% block content %}
 
 
-
-
-
-
-<div class="bg-image">
-<div class="container-fluid">
-    
-    <div class="row mb-5" style="height: 100vh;">
-        <div class="col-lg-6 text-dark  py-5 mt-5">
-        
-    
-            <!-- <img class="cover" src="{% static 'images/restaurant-bg.jpg' %}" style="object-fit: cover;"> -->
-            <h1 class="mt-10 ml-5 text-white font-weight-bold" style= "font-size:xx-large; font-family:Georgia, 'Times New Roman', Times, serif">-KENYAN FOODS WITH AN EXTRA TWIST-</h1>
-
-            <a href="{% url 'customer.order' %}" class="btn btn-info mt-5 ml-5">ORDER NOW</a>
-
+<div class="container-fluid banner">
+  <div class="overlay"></div>
+  <div class="row h-100">
+      <div class="col-lg-6 ps-5 d-flex flex-column justify-content-center">
+        <small class="text-light font-weight-bold">KENYAN FOODS WITH AN EXTRA TWIST</small>
+          <h1 class="banner-heading" id="head1">Make a reservation or order your meal from the comfort of your hairnet</h1>
+          <a href="{% url 'customer.order' %}" class="btn btn-warning btn-lg mt-5 ml-5">ORDER NOW</a>
         </div>
-        
-    
-
-    </div>
   </div>
 </div>
+
+
+
 
 
 

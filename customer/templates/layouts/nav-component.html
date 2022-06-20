@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5c4033;">
+<nav class="navbar navbar-expand-lg navbar-dark position-absolute w-100" style="background-color: #140701be;">
     <a class="navbar-brand text-white font-weight-bold" style="font-size: x-large; font-style: italic;" href="{% url 'home' %}">GeeKoni</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,6 +15,10 @@
         
         <li class="nav-item">
           <a class="nav-link mx-3 text-light" href="{% url 'customer.menu' %}">Menu</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="btn btn-outline-warning btn-rounded mx-1" href="{% url 'customer.reservations' %}">Make a Reservation</a>
         </li>
         
        
@@ -45,9 +49,7 @@
 
         {% endif %}
             
-        <li class="nav-item">
-          <a class="btn btn-info btn-rounded mx-3" href="{% url 'customer.reservations' %}">Make a Reservation</a>
-        </li>
+        
 
         
         

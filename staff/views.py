@@ -56,7 +56,7 @@ def deleteStaff(request, id):
         return JsonResponse(data)
 
     else:
-        return HttpResponseRedirect('/staff/staff')
+        return HttpResponseRedirect('/staff/list')
 
 @login_required
 def deleteCategory(request, id):
@@ -64,15 +64,8 @@ def deleteCategory(request, id):
     category = Category.objects.get(pk=id)
     category.delete()
 
-    
-
-    if request.is_ajax():
-
-        data = {}
-        return JsonResponse(data)
-
-    else:
-        return HttpResponseRedirect('/staff/category')
+    data = {}
+    return HttpResponseRedirect('/staff/category')
 
 @login_required
 def viewMenu(request):
@@ -88,15 +81,8 @@ def deleteMenu(request, id):
     menu = Menu.objects.get(pk=id)
     menu.delete()
 
-    
-
-    if request.is_ajax():
-
-        data = {}
-        return JsonResponse(data)
-
-    else:
-        return HttpResponseRedirect('/staff/menu')
+    data = {}
+    return JsonResponse(data)
 
 @login_required
 def viewPayment(request):

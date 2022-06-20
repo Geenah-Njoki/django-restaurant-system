@@ -10,8 +10,7 @@ urlpatterns = [
 
     path('user/create', CreateUser.as_view(), name="create.user"),
 
-    path('staff', StaffList.as_view(), name="staff"),
-    path('staff', viewStaff, name='staff'),
+    path('list', StaffList.as_view(), name="staff"),
     path('staff/create', CreateStaff.as_view(), name="create.staff"),
     path('staff/update/<pk>', StaffUpdate.as_view(), name= "staff.update"),
     path('staff/<pk>/details', StaffDetails.as_view(), name="staff.details"),

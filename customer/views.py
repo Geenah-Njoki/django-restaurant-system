@@ -232,8 +232,17 @@ def makeReservation(request):
     context= {
         "reservation":reservation
     }
-   
+
+    return HttpResponseRedirect('/reservation/complete')
+
+
+def reservationComplete(request):
+
+    '''
+    This function will be used to redirect to the reservation confirmation page'''
+    context = {}
     return render(request, "reservations_details.html", context)
+
 
 def findTable(): 
     table = Table.objects.filter(is_taken=False).first()
