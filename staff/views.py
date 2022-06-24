@@ -326,7 +326,7 @@ class MenuList(ListView):
 
 class CreateMenu(CreateView):
         model= Menu
-        fields = ["image","type", "category", "item", "quantity"]
+        fields = ["image","type", "category", "item", "quantity","price"]
         success_url = '/staff/menu'
         template_name = 'staff_form.html'
 

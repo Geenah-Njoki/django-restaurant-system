@@ -27,9 +27,11 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Image</th>
                         <th>Type</th>
                         <th>Category</th>
                         <th>Item</th>
+                        <th>Price</th>
                         <th>Quantity</th>
                         <th>Created at</th>
                         <th>Updated at</th>
@@ -43,9 +45,11 @@
 
                         <tr>
                             <td>{{menu.id}}</td>
+                            <td><img src="{{menu.image.url}}" alt="Menu Image" class="img-fluid rounded" height="100" width="100"></td>
                             <td>{{menu.type}}</td>
                             <td>{{menu.category}}</td>
                             <td>{{menu.item}}</td>
+                            <td>{{menu.price}}</td>
                             <td>{{menu.quantity}}</td>
                             <td>{{menu.created_at}}</td>
                             <td>{{menu.updated_at}}</td>

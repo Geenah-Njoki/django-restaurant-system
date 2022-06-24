@@ -157,7 +157,8 @@ def getReviews(request):
 
 def getMenu(request):
     context={
-        'menu' : Menu.objects.all()
+        'menu_items' : Menu.objects.all(),
+        'categories' : Category.objects.all()
 
     }
 

@@ -88,6 +88,7 @@ class Menu(models.Model):
     type=models.CharField(max_length=100, choices=MENU_TYPES)
     category=models.ForeignKey(Category, on_delete=models.CASCADE)
     item=models.CharField(max_length=100)
+    price=models.FloatField(default=0.0)
     quantity=models.IntegerField()
     image=models.ImageField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
