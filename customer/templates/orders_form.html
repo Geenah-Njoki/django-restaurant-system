@@ -37,14 +37,14 @@
          
           <select id="inputFood" name="food" class="form-control">
             <option>--select--</option>
-            {% for food in foods %}
-            <option value="{{food.id}}}">{{food.item}}</option>
+            {% for menu in menu_items %}
+              <option value="{{menu.id}}">{{menu.item}}</option>
             {% endfor %}
           </select>
         </div>
         <div class="form-group col-md-6">
           <label for="IntegerField">Quantity</label>
-          <input type="quantity" class="form-control" id="IntegerField" placeholder="">
+          <input type="number" name="quantity" class="form-control" id="IntegerField" placeholder="">
           
         </div>
         
@@ -54,11 +54,12 @@
           <label for="CharField">Drink</label>
       
           
-          <select id="inputDrink" class="form-control">
+          <select id="inputMenu" class="form-control">
             <option>--select--</option>
-            {% for drink in drinks %}
-            <option value="{{drink.id}}}">{{drink.item}}</option>
-            {% endfor %}
+           
+            <option>coffee</option>
+            <option>chocolate milkshake</option>
+            
            
           </select>
         </div>

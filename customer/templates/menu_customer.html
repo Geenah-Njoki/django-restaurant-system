@@ -41,7 +41,7 @@
 
         {% endfor %}
     </div>
-    <div class="row  mt-3">
+    <div class="row mt-3">
 
         {% for menu in menu_items %}
 
@@ -49,11 +49,16 @@
             <div class="card">
                 <img src="{{menu.image.url}}" class="card-img-top">
                 
-            </div><span class="badge badge-warning">{{menu.category}}</span></h5>
+            </div><span class="badge badge-warning">{{menu.category}}</span>
             <h6 class="mb-0 mt-2">{{menu.item}}</h6>
             <small>${{menu.price}}</small>
 
+            <a href="{% url 'customer.order' %}" class="btn btn-outline-warning" style="font-size:12px">Make Order</a>
+        
+
         </div>
+
+        
 
         {% endfor %}
 
