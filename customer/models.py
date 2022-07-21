@@ -74,6 +74,8 @@ class Order(models.Model):
     staff=models.ForeignKey(Staff, on_delete=models.CASCADE, null=True, blank=True, related_name="staff")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return str(self.order_number)
 
     
 class Menu(models.Model):
@@ -93,6 +95,8 @@ class Menu(models.Model):
     image=models.ImageField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.item
 
 class OrderMenu(models.Model):
     order=models.ForeignKey(Order, on_delete=models.CASCADE)
@@ -100,6 +104,8 @@ class OrderMenu(models.Model):
     quantity=models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.menu.item
 
 class Payments(models.Model):
     PAYMENT_STATUSES=(

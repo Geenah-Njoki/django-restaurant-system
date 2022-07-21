@@ -1,4 +1,6 @@
+from datetime import datetime
 from multiprocessing import context
+import random
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
@@ -167,15 +169,16 @@ def getMenu(request):
 
 
 def makeOrder(request):
-    food = Menu.objects.filter(type = Menu.FOOD),
-    Drinks = Menu.objects.filter (type = Menu.DRINKS),
-    Quantity = Menu.objects.filter (type = Menu. quantity),
-   
+    food = Menu.objects.filter(type = Menu.FOOD)
+    Drinks = Menu.objects.filter (type = Menu.DRINKS)
+    print(food)
+
+    
 
     context={
         'foods' : food,
-        'drinks' : Drinks,
-        'quantity' : Quantity,
+        'drinks' : Drinks
+       
         
 
 
@@ -185,14 +188,49 @@ def makeOrder(request):
 
 def saveOrder(request):
     ##Here you get all the form details
-    phone_number = request.POST.get('phone_number'),
-    food = request.POST.get('food'),
-    drink = request.POST.get ('drink'),
-    quantity = request.POST.get ('quantity'),
-    location = request.POST.get ('location')
+    phone_number = request.POST.get('phone_number')
+    food = request.POST.get('food')
+    drink = request.POST.get('drink')
+    food_quantity = request.POST.get('food_quantity',1)
+    drink_quantity = request.POST.get('drink_quantity',1)
+    location = request.POST.get('location') 
+    email = request.POST.get('email')
+    
+
+    cost = 0
+    if food:
+        selected_food = Menu.objects.filter(pk=food).first()
+        cost = cost+(selected_food.price*float(food_quantity))
+    if drink:
+        selected_drink = Menu.objects.filter(pk=drink).first()
+        cost = cost+(selected_drink.price*float(drink_quantity))
+
+    current_user = User.objects.filter(email = email).filter(username=phone_number).first()
+    if not current_user:
+        current_user = User.objects.create_user(phone_number, email, email)
 
     ##After you get the details you create a new order order = Order.objects.create(...details...)
     ##Then you take them to the order details page
+    order = Order.objects.create(
+        user = current_user, 
+        cost = cost,
+        order_number = random.randint(0,999999)
+
+
+    )
+
+    if food:
+        OrderMenu.objects.create(
+            order = order,
+            menu = selected_food,
+            quantity = food_quantity
+        )
+    if drink:
+        OrderMenu.objects.create(
+            order = order,
+            menu = selected_drink,
+            quantity = drink_quantity
+        )
 
     context ={
         
